@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>VeterinerApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">VeterinerApp</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/persons}">VeterinerAPP</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class = "container">
+    <div class = "row">
+        <h1>List Students </h1>
+    </div>
+    <div class = "row">
+        <div class ="col-lg-3">
+            <a th:href = "@{/person/create}" class = " btn btn-primary btn-sm mb-3"  > Add Person </a>
+        </div>
+
+    </div>
+    <table class = "table table-striped table-bordered">
+        <thead class = "table-dark">
+        <tr>
+            <th> Person Name</th>
+            <th> Person Surname</th>
+            <th> Person Address</th>
+            <th> Person Phone</th>
+            <th>Person Email</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each = "person: ${persons}">
+            <td th:text = "${person.name}">  </td>
+            <td th:text = "${person.surname}">  </td>
+            <td th:text = "${person.address}">  </td>
+            <td th:text = "${person.phone}">  </td>
+            <td th:text = "${person.email}">  </td>
+            <td>
+                <a th:href="@{/person/update/{id}(id=${person.id})}" class = "btn btn-info">Update</a>
+            </td>
+            <td>
+                <a th:href="@{/person/delete/{id}(id=${person.id})}" class = "btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+
+
+</body>
+</html>
