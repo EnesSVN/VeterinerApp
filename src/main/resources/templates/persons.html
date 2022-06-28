@@ -47,6 +47,7 @@
             <th>Person Email</th>
             <th>Update</th>
             <th>Delete</th>
+            <th>Add Animal</th>
         </tr>
         </thead>
 
@@ -62,6 +63,9 @@
             </td>
             <td>
                 <a th:href="@{/person/delete/{id}(id=${person.id})}" class = "btn btn-danger">Delete</a>
+            </td>
+            <td>
+                <a th:href="@{/animal/create/{id}(id=${person.id})}" class = "btn btn-success">Add Animal</a>
             </td>
         </tr>
         </tbody>
