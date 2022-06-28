@@ -1,21 +1,21 @@
 package com.enesseven.model;
 
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name="persons")
-public class Person {
+@Table(name="Animals")
+public class Animal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,20 +25,19 @@ public class Person {
     private String name;
 
     @Column
-    private String surname;
+    private String strain;
 
     @Column
-    private String address;
+    private String breed;
 
     @Column
-    private String phone;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date date_of_birth;
 
     @Column
-    private String email;
+    private String description;
 
-    @Column
-    @OneToMany(mappedBy = "person", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Animal> animal;
-
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id", nullable = false)
+    private Person person;
 }
