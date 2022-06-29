@@ -29,7 +29,6 @@ public class PersonService {
     }
 
     public void deletePerson (Long id){
-
         personRepository.deleteById(id);
     }
 

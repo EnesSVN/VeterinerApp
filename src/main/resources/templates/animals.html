@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/persons}">VeterinerAPP</a>
+                <a class="nav-link" >VeterinerAPP</a>
             </li>
         </ul>
     </div>
@@ -29,14 +29,9 @@
 
 <div class = "container">
     <div class = "row">
-        <h1>List Persons </h1>
+        <h1>List Animals </h1>
     </div>
-    <div class = "row">
-        <div class ="col-lg-3">
-            <a th:href = "@{/person/create}" class = " btn btn-primary btn-sm mb-3"  > Add Person </a>
-        </div>
 
-    </div>
     <table class = "table table-striped table-bordered">
         <thead class = "table-dark">
         <tr>
@@ -47,26 +42,18 @@
             <th>Person Email</th>
             <th>Update</th>
             <th>Delete</th>
-            <th>Add Animal</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each = "person: ${persons}">
-            <td th:text = "${person.name}">  </td>
-            <td th:text = "${person.surname}">  </td>
-            <td th:text = "${person.address}">  </td>
-            <td th:text = "${person.phone}">  </td>
-            <td th:text = "${person.email}">  </td>
-            <td>
-                <a th:href="@{/person/update/{id}(id=${person.id})}" class = "btn btn-info">Update</a>
-            </td>
-            <td>
-                <a th:href="@{/person/delete/{id}(id=${person.id})}" class = "btn btn-danger">Delete</a>
-            </td>
-            <td>
-                <a th:href="@{/animal/create/{id}(id=${person.id})}" class = "btn btn-success">Add Animal</a>
-            </td>
+        <tr th:each = "animal: ${animals}">
+            <td th:text = "${animal.name}">  </td>
+            <td th:text = "${animal.strain}">  </td>
+            <td th:text = "${animal.breed}">  </td>
+            <td th:text = "${animal.date_of_birth}">  </td>
+            <td th:text = "${animal.description}">  </td>
+
+
         </tr>
         </tbody>
 

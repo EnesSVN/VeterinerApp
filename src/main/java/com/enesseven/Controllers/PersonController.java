@@ -24,7 +24,6 @@ public class PersonController {
     //http://localhost:8081/persons
     @GetMapping("/persons")
     public String getPerson(Model model) {
-        Person person = new Person();
         model.addAttribute("persons",personService.listPerson());
         return "persons";
     }
