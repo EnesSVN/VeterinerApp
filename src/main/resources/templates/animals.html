@@ -52,6 +52,9 @@
             <td th:text = "${animal.breed}">  </td>
             <td th:text = "${animal.date_of_birth}">  </td>
             <td th:text = "${animal.description}">  </td>
+            <td>
+                <a th:href="@{/animal/update/{id}(id=${animal.id})}" class = "btn btn-info">Update</a>
+            </td>
 
 
         </tr>

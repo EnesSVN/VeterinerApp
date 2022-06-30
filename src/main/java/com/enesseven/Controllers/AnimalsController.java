@@ -43,4 +43,31 @@ public class AnimalsController {
         return "redirect:/animals";
     }
 
+
+    //http://localhost:8081/animal/update/1
+    @GetMapping("/animal/update/{id}")
+    public String getAnimalUpdate(@PathVariable Long id, Model model) {
+        model.addAttribute("animal", animalService.getAnimalById(id));
+        model.addAttribute("person", personService.listPerson());
+        return "animal_update";
+    }
+
+
+
+    @PostMapping("/animal/{id}")
+    public String postAnimalUpdate(@PathVariable Long id, @ModelAttribute("animal") Animal animal){
+
+
+
+        Animal existingAnimal = animalService.getAnimalById(id);
+        existingAnimal.setId(id);
+        existingAnimal.setName(animal.getName());
+        existingAnimal.setStrain(animal.getStrain());
+        existingAnimal.setBreed(animal.getBreed());
+        existingAnimal.setDescription(animal.getDescription());
+        existingAnimal.setPerson(animal.getPerson());
+        animalService.saveAnimal(existingAnimal);
+        return "redirect:/animals";
+    }
+
 }

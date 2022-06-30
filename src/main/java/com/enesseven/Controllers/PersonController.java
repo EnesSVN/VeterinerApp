@@ -42,7 +42,6 @@ public class PersonController {
         personService.savePerson(person);
         return "redirect:/persons";
     }
-    ///////////////////////////
 
     @GetMapping("/person/update/{id}")
     public String getPersonUpdate(@PathVariable Long id, Model model) {
