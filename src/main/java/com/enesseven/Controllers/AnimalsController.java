@@ -48,16 +48,18 @@ public class AnimalsController {
     @GetMapping("/animal/update/{id}")
     public String getAnimalUpdate(@PathVariable Long id, Model model) {
         model.addAttribute("animal", animalService.getAnimalById(id));
-        model.addAttribute("person", personService.listPerson());
+        model.addAttribute("persons", personService.listPerson());
+       // model.addAttribute("")
         return "animal_update";
     }
 
 
 
     @PostMapping("/animal/{id}")
-    public String postAnimalUpdate(@PathVariable Long id, @ModelAttribute("animal") Animal animal){
+    public String postAnimalUpdate(@PathVariable Long id, @ModelAttribute("animal") Animal animal, @RequestParam Long person_id){
 
 
+        Person person = personService.getPersonById(person_id);
 
         Animal existingAnimal = animalService.getAnimalById(id);
         existingAnimal.setId(id);
@@ -65,8 +67,14 @@ public class AnimalsController {
         existingAnimal.setStrain(animal.getStrain());
         existingAnimal.setBreed(animal.getBreed());
         existingAnimal.setDescription(animal.getDescription());
-        existingAnimal.setPerson(animal.getPerson());
+        existingAnimal.setPerson(person);
         animalService.saveAnimal(existingAnimal);
+        return "redirect:/animals";
+    }
+
+    @GetMapping("/animal/delete/{id}")
+    public String animalelDelete(@PathVariable Long id){
+        animalService.deleteAnimal(id);
         return "redirect:/animals";
     }
 

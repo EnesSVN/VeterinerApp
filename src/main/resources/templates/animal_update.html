@@ -62,7 +62,7 @@
                     <div class="form-group">
                         <label> Person</label>
                         <select  name="person_id" class="form-control">
-                            <option th:each="person : ${person}" th:value="${person.id}" th:text="${person.email}" }  ></option>
+                            <option  th:each="person : ${persons}" th:value="${person.id}" th:text="${person.email}" th:selected="${animal.person} == ${person} ? true : false" }  ></option>
                         </select>
                     </div>
 
