@@ -47,10 +47,16 @@ public class AnimalsController {
     //http://localhost:8081/animal/update/1
     @GetMapping("/animal/update/{id}")
     public String getAnimalUpdate(@PathVariable Long id, Model model) {
-        model.addAttribute("animal", animalService.getAnimalById(id));
-        model.addAttribute("persons", personService.listPerson());
-       // model.addAttribute("")
-        return "animal_update";
+
+        try {
+            Animal animal = animalService.getAnimalById(id);
+            model.addAttribute("animal", animal);
+            model.addAttribute("person", personService.listPerson());
+            return "animal_update";
+        } catch (Exception e) {
+            return "redirect:/animals";
+        }
+
     }
 
 
@@ -74,8 +80,25 @@ public class AnimalsController {
 
     @GetMapping("/animal/delete/{id}")
     public String animalelDelete(@PathVariable Long id){
-        animalService.deleteAnimal(id);
-        return "redirect:/animals";
+       try {
+           animalService.deleteAnimal(id);
+           return "redirect:/animals";
+         } catch (Exception e) {
+           return "redirect:/animals";
+       }
+
+    }
+
+    @GetMapping("/animal/detail/{id}")
+    public String getAnimalDetail(@PathVariable Long id, Model model) {
+
+        try {
+            Animal animal = animalService.getAnimalById(id);
+            model.addAttribute("animal", animal);
+            return "animal_detail";
+        } catch (Exception e) {
+            return "redirect:/animals";
+        }
     }
 
 }

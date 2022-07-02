@@ -1,6 +1,7 @@
 package com.enesseven.services;
 
 import com.enesseven.model.Animal;
+import com.enesseven.model.Person;
 import com.enesseven.repository.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,9 @@ public class AnimalService {
     }
 
 
+    public List<Animal> searchAnimal (String name){
 
+        return animalRepository.findByNameContainingIgnoreCase(name);
+    }
 
 }

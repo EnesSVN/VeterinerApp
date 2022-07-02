@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,14 +40,23 @@ public class PersonController {
 
     @PostMapping("/persons")
     public String postPersonCreate(@ModelAttribute("person") Person person) {
+        person.setEmail(person.getEmail().toLowerCase());
         personService.savePerson(person);
         return "redirect:/persons";
     }
 
     @GetMapping("/person/update/{id}")
     public String getPersonUpdate(@PathVariable Long id, Model model) {
-        model.addAttribute("person",personService.getPersonById(id));
-        return "person_update";
+
+
+        try {
+            Person person = personService.getPersonById(id);
+            model.addAttribute("person", person);
+            return "person_update";
+        } catch (Exception e) {
+            return "redirect:/persons";
+        }
+
     }
 
     //http://localhost:8081/person/update/1
@@ -66,13 +76,32 @@ public class PersonController {
     }
 
 
-
-
-
     @GetMapping("/person/delete/{id}")
-    public String personelDelete(@PathVariable Long id){
-        personService.deletePerson(id);
-        return "redirect:/persons";
+    public String personDelete(@PathVariable Long id){
+
+
+        try {
+            personService.deletePerson(id);
+            return "redirect:/persons";
+        } catch (Exception e) {
+            return "redirect:/persons";
+        }
+
     }
+
+    @GetMapping("/person/detail/{id}")
+    public String getPersonDetail(@PathVariable Long id, Model model){
+
+        try {
+            Person person = personService.getPersonById(id);
+            model.addAttribute("person", person);
+            return "person_detail";
+        } catch (Exception e) {
+            return "redirect:/persons";
+        }
+
+    }
+
+
 
 }

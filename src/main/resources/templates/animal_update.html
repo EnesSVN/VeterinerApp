@@ -6,26 +6,29 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
           crossorigin="anonymous">
+          <link rel="stylesheet" href="style/style.css">
+
 </head>
 <body>
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Brand -->
-    <a class="navbar-brand" href="#">VeterinerApp</a>
-
-    <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Navbar links -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/person}">VeterinerApp</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" >VeterinerApp</a>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/persons}">Persons</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/animals}">animals</a>
+                </li>
+               
+            </ul>
+        </div>
+    </nav>
 <br>
 <br>
 <div class = "container">
@@ -62,7 +65,7 @@
                     <div class="form-group">
                         <label> Person</label>
                         <select  name="person_id" class="form-control">
-                            <option  th:each="person : ${persons}" th:value="${person.id}" th:text="${person.email}" th:selected="${animal.person} == ${person} ? true : false" }  ></option>
+                            <option  th:each="person : ${persons}" th:value="${person.id}" th:text="${person.email}" th:selected="${animal.person} == ${person} ? true : false"   ></option>
                         </select>
                     </div>
 

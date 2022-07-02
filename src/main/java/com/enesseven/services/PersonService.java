@@ -40,4 +40,9 @@ public class PersonService {
 
         return personRepository.findById(id).get();
     }
+
+    public List<Person> searchPerson (String name){
+
+        return personRepository.findByNameContainingIgnoreCase(name);
+    }
 }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VeterinerApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <div class="container">
+
+            <a class="navbar-brand">VeterinerApp</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/persons}">Persons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/animals}">animals</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="input-group align-self-center">
+            <form action="" method="get">
+                <input name="search" type="search" class="form-control rounded"
+                    placeholder="Type the name of the Animal or Person you wish to find" aria-label="Search"
+                    aria-describedby="search-addon" />
+                <button type="submit" class="btn btn-outline-primary">search</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Type</th>
+                    <th> Animal Name</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="searchResult: ${searchResults}">
+                    <td th:text="${searchResult.class.name == 'com.enesseven.model.Person'} ? 'Person 🚶‍♂️' : 'Animal 🐶'" ></td>
+                    <td th:text="${searchResult.name}"> </td>
+                    <td>
+                        <a th:href="@{/update/${searchResult.id}}">Update</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/delete/${searchResult.id}}">Delete</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/detail/${searchResult.id}}">Detail</a>
+                    </td>
+
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
