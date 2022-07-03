@@ -45,6 +45,14 @@ Bir veteriner kliniğinin hayvan takibini ve işlerini hızlıca yapması için 
     8. [Git] (Kodlarda geri donmek icin)
     
 
+# Proje Baslatma
+
+```shell
+java -jar veteriner_app-0.0.1-SNAPSHOT.jar
+Application running on http://localhost:8081/
+ ```
+
+
 
 
     
