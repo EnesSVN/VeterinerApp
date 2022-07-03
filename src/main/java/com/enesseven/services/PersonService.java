@@ -32,10 +32,7 @@ public class PersonService {
         personRepository.deleteById(id);
     }
 
-    public Person getPersonByName (String name){
 
-        return personRepository.findByName(name);
-    }
     public Person getPersonById (Long id){
 
         return personRepository.findById(id).get();

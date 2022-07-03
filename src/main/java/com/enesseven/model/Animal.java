@@ -1,6 +1,5 @@
 package com.enesseven.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -20,20 +19,15 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
     private String name;
 
-    @Column
     private String strain;
 
-    @Column
     private String breed;
 
-    @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_of_birth;
 
-    @Column
     private String description;
 
     @ManyToOne

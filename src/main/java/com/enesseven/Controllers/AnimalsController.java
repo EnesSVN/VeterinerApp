@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Controller
 public class AnimalsController {
@@ -20,6 +19,7 @@ public class AnimalsController {
         this.animalService = animalService;
         this.personService = personService;
     }
+
     @GetMapping("/animals")
     public String getAnimals(Model model) {
         model.addAttribute("animals", animalService.listAnimal());
@@ -47,7 +47,6 @@ public class AnimalsController {
     //http://localhost:8081/animal/update/1
     @GetMapping("/animal/update/{id}")
     public String getAnimalUpdate(@PathVariable Long id, Model model) {
-
         try {
             Animal animal = animalService.getAnimalById(id);
             model.addAttribute("animal", animal);
@@ -56,25 +55,22 @@ public class AnimalsController {
         } catch (Exception e) {
             return "redirect:/animals";
         }
-
     }
-
 
 
     @PostMapping("/animal/{id}")
     public String postAnimalUpdate(@PathVariable Long id, @ModelAttribute("animal") Animal animal, @RequestParam Long person_id){
-
-
         Person person = personService.getPersonById(person_id);
-
         Animal existingAnimal = animalService.getAnimalById(id);
+
         existingAnimal.setId(id);
         existingAnimal.setName(animal.getName());
         existingAnimal.setStrain(animal.getStrain());
         existingAnimal.setBreed(animal.getBreed());
         existingAnimal.setDescription(animal.getDescription());
         existingAnimal.setPerson(person);
-        animalService.saveAnimal(existingAnimal);
+
+        animalService.updateAnimal(existingAnimal);
         return "redirect:/animals";
     }
 
@@ -83,15 +79,14 @@ public class AnimalsController {
        try {
            animalService.deleteAnimal(id);
            return "redirect:/animals";
+
          } catch (Exception e) {
            return "redirect:/animals";
        }
-
     }
 
     @GetMapping("/animal/detail/{id}")
     public String getAnimalDetail(@PathVariable Long id, Model model) {
-
         try {
             Animal animal = animalService.getAnimalById(id);
             model.addAttribute("animal", animal);
@@ -100,5 +95,4 @@ public class AnimalsController {
             return "redirect:/animals";
         }
     }
-
 }

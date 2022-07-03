@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.enesseven</groupId>
-    <artifactId>VeterinerApp</artifactId>
+    <artifactId>veteriner_app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>VeterinerApp</name>
-    <description>VeterinerApp</description>
+    <name>veteriner_app</name>
+    <description>veteriner_app</description>
     <properties>
         <java.version>17</java.version>
         <hibernate.version>5.6.5.Final</hibernate.version>

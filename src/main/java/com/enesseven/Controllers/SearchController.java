@@ -4,7 +4,6 @@ import com.enesseven.model.Animal;
 import com.enesseven.model.Person;
 import com.enesseven.services.AnimalService;
 import com.enesseven.services.PersonService;
-import org.hibernate.query.QueryParameter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +24,8 @@ public class SearchController {
     }
 
     @GetMapping("/")
-    public String getSearch(Model model, @RequestParam("search") String search) {
-        System.out.println(search);
+    public String getSearch(Model model, @RequestParam(required=false, name = "search" ,defaultValue="unknown") String search) {
+
         List<Person> persons = personService.searchPerson(search);
         List<Animal> animals = animalService.searchAnimal(search);
 
@@ -34,7 +33,6 @@ public class SearchController {
         searchResult.addAll(persons);
         searchResult.addAll(animals);
 
-        System.out.println(searchResult.toString());
         model.addAttribute("searchResults", searchResult);
         return "index";
     }
