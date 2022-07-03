@@ -33,7 +33,17 @@ Bir veteriner kliniğinin hayvan takibini ve işlerini hızlıca yapması için 
     9. [Animal] (Animal Silme)
     10. [Animal] (Animal Ara)
 
+# Neyi neden kullandim
 
+    1. [JPA] (Database ile iletişim)
+    2. [Spring Boot] (Web Servisleri)
+    3. [Hibernate] (Database ile iletişim)
+    4. [Thymeleaf] (Html icinde java kodlarını yazabilmek)
+    5. [Bootstrap] (Html icinde css kodlarını yazabilmek)
+    6. [H2] (Gelistirme sureci daha rahat olsun diye)
+    7. [Java] (Kodlarınızın daha kolay olmasını sağlamak)
+    8. [Git] (Kodlarda geri donmek icin)
+    
 
 
 
